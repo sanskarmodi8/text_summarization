@@ -27,7 +27,8 @@ list_of_files = [
     "requirements.txt",
     "setup.py",
     "experiment_nb/trials.ipynb",
-    ".gitignore"
+    ".gitignore",
+    "dvc.yaml"
 
 ]
 

@@ -4,7 +4,7 @@ import logging
 
 logging_str = '[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s'
 log_dir = "logs"
-log_filepath = os.system.join(log_dir, "running_logs.log")
+log_filepath = os.path.join(log_dir, "running_logs.log")
 os.makedirs(log_dir, exist_ok=True)
 
 logging.basicConfig(
