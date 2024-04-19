@@ -2,7 +2,7 @@ max_len_input_encodings: 1024
 max_len_target_encodings: 128
 
 TrainingArguments:
-  num_train_epochs: 1
+  num_train_epochs: 5
   warmup_steps: 500
   per_device_train_batch_size: 1
   weight_decay: 0.01

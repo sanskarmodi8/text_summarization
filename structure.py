@@ -26,7 +26,7 @@ list_of_files = [
     "Dockerfile",
     "requirements.txt",
     "setup.py",
-    "experiment_nb/trials.ipynb",
+    "colab_notebooks/main.ipynb",
     ".gitignore",
     "dvc.yaml"
 
