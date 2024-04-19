@@ -1,1 +1,2 @@
-key: value
+max_len_input_encodings: 1024
+max_len_target_encodings: 128

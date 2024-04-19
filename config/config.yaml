@@ -6,3 +6,8 @@ data_ingestion:
   source_URL: https://drive.google.com/file/d/1crHgL6Q1xO_N0AZxi5xbnCoFx-tZHisB/view?usp=sharing
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  data_path: artifacts/data_ingestion/samsum_dataset
+  tokenizer_name: google/pegasus-cnn_dailymail
