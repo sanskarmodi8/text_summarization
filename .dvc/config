@@ -1,0 +1,5 @@
+[core]
+    remote = myremote
+['remote "myremote"']
+    url = azure://model/?sas=si=modelpolicy
+    account_name = textsummstorage
