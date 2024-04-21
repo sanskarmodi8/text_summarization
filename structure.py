@@ -28,7 +28,6 @@ list_of_files = [
     "setup.py",
     "colab_notebooks/main.ipynb",
     ".gitignore",
-    "dvc.yaml"
 
 ]
 
