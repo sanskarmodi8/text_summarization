@@ -160,6 +160,7 @@ cython_debug/
 #.idea/
 
 artifacts/data_ingestion/*
-artifacts/prepare_base_model/*
-artifacts/training/model_checkpoints/*
+artifacts/data_transformation/*
+artifacts/model_evaluation/*
+artifacts/model_trainer/*
 temp.txt
