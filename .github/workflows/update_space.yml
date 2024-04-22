@@ -32,7 +32,7 @@ jobs:
 
     - name: Set up DVC
       run: |
-        pip install dvc
+        pip install dvc dvc[azure]
 
     - name: Pull model files
       run: dvc pull
