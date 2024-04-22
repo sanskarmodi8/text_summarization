@@ -1,0 +1,31 @@
+name: Retry failed jobs
+
+on:
+  workflow_run:
+    workflows: ["Run Python script"]
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  retry_failed_jobs:
+    name: Retry failed jobs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Retry failed job
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const failedJobs = github.event.workflow_run.jobs.filter(job => job.conclusion === 'failure');
+            if (failedJobs.length > 0) {
+              const retrigger = failedJobs.map(job => `job.${job.name}`);
+              await github.actions.createWorkflowDispatch({
+                workflow_id: github.context.workflow,
+                ref: github.context.ref,
+                inputs: {
+                  retrigger_jobs: retrigger.join(',')
+                }
+              });
+            }
