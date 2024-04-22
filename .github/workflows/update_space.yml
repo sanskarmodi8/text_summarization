@@ -32,13 +32,5 @@ jobs:
     - name: Log in to Hugging Face
       run: python -c 'import huggingface_hub; huggingface_hub.login(token="${{ secrets.hf_token }}", add_to_git_credential=True)'
 
-
-    - name: Set up DVC
-      run: |
-        pip install dvc dvc[azure]
-
-    - name: Pull model files
-      run: dvc pull
-
     - name: Deploy to Spaces
       run: gradio deploy

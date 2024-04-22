@@ -8,6 +8,17 @@ TOKENIZER_PATH = "artifacts/model_trainer/tokenizer"
 MODEL_PATH = "artifacts/model_trainer/pegasus-samsum-model"
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
+def check_required_files_exist():
+    if os.path.exists(TOKENIZER_PATH) and os.path.getsize(TOKENIZER_PATH)>0 and os.path.exists(MODEL_PATH) and os.path.getsize(MODEL_PATH)>0:
+        print("REQUIRED FILES EXISTS")
+    else:
+        os.environ["AZURE_SUBSCRIPTION_ID"] = "c5699ea4-2e51-4d63-9018-11208507e22c"
+        os.environ["AZURE_CLIENT_SECRET"] = "kTJ8Q~EjcKiA_VoLyJrIC84wfO9nyl1RW1_q5azK"
+        os.environ["AZURE_TENANT_ID"] = "2c5bdaf4-8ff2-4bd9-bd54-7c50ab219590"
+        os.environ["AZURE_CLIENT_ID"] = "d66c9f1b-5d63-4d53-a081-2c7f17b94ce6"
+        subprocess.run(["dvc", "pull"])
+        print("PULLED REQUIRED FILES SUCCESSFULLY FROM AZURE BLOB STORAGE USING DVC")
+
 
 def summarize(text):
     
@@ -31,4 +42,6 @@ def summarize(text):
 
 if __name__=="__main__":
     
-    gr.Interface(fn=summarize, inputs="text", outputs="text", inputs_label="Enter your Text", outputs_label="Generated Summary").launch(debug=True, share=True)
+    check_required_files_exist()
+    
+    gr.Interface(fn=summarize, inputs="text", outputs="text").launch(debug=True)
