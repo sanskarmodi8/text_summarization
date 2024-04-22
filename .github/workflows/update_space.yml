@@ -9,6 +9,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -23,6 +29,13 @@ jobs:
 
     - name: Log in to Hugging Face
       run: python -c 'import huggingface_hub; huggingface_hub.login(token="${{ secrets.hf_token }}")'
+
+    - name: Set up DVC
+      run: |
+        pip install dvc
+
+    - name: Pull model files
+      run: dvc pull
 
     - name: Deploy to Spaces
       run: gradio deploy
