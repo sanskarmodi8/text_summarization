@@ -49,7 +49,7 @@ To set up the project environment, follow these steps:
 
 1. Clone this repository.
 2. Install Python 3.8 and ensure pip is installed.
-3. Uncomment the last line in requirements.txt containing `. e` and save changes.
+3. Uncomment the last line in requirements.txt containing `-e .` and save changes.
 4. Install project dependencies using `pip install -r requirements.txt`.
 
 ## Usage
